@@ -1,0 +1,50 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+
+{% include 'blog/nav.html' %}
+
+{% block flex %}
+    <div id="carouselExampleSlidesOnly" class="carousel slide mt-1 shadow" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'blog/images/holi.png' %}" class="d-block w-100" height="300px" alt="holi">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'blog/images/happyholi.png' %}" class="d-block w-100" height="300px"
+                     alt="happyholi">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'blog/images/handsholi.png' %}" class="d-block w-100" height="300px"
+                     alt="colorpeople">
+            </div>
+        </div>
+    </div>
+{% endblock flex %}
+
+<div class="d-flex justify-content-center">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<footer class="py-3 bg-grey">
+    <p class="m-0 text-dark text-center ">Copyright &copy; Jay Holi</p>
+</footer>
+
+<script src="{% static 'blog/js/jquery.js' %}"></script>
+<script src="{% static 'blog/js/popper.js' %}"></script>
+<script src="{% static 'blog/js/bootstrap.js' %}"></script>
+</body>
+</html>

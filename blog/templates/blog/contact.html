@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    Contact
+{% endblock title %}
+
+{% block content %}
+    <div class="container center mt-5 shadow">
+        <div class="text-center mt-5 mb-5"><h1>Contact Us</h1></div>
+        <form>
+            <div class="row mb-3">
+                <div>
+                    <p>Name</p>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" aria-label="default input example" required>
+                    <small class="text-muted">First Name</small>
+                </div>
+                <div class="col-6">
+                    <input class="form-control" type="text" aria-label="default input example" required>
+                    <small class="text-muted">Last Name</small>
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlEmail" class="form-label">Email</label>
+                <input type="text" class="form-control" id="exampleFormControlEmail" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-lg btn-outline-warning py-1 px-5">Send</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

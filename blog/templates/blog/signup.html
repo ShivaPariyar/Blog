@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    Sign Up
+{% endblock title %}
+
+{% block content %}
+    <div class="container col-sm-5 shadow mt-3">
+        <div class="text-center mt-3"><h4>Sign Up for Free</h4></div>
+        <div class="text-muted text-center border-bottom pb-2 mb-4"><small>Please fill in this form to create an
+            account!</small></div>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">{{ forms.username }}{{ forms.username.errors|striptags }}</div>
+            <div class="row mb-4">
+                <div class="col-6">{{ forms.first_name }}{{ forms.first_name.errors|striptags }}</div>
+                <div class="col-6">{{ forms.last_name }}{{ forms.last_name.errors|striptags }}</div>
+            </div>
+            <div class="mb-4">
+                <div>{{ forms.email }}{{ forms.email.errors|striptags }}</div>
+            </div>
+            <div class="mb-4">
+                <div>{{ forms.password1 }}{{ forms.password2.errors|striptags }}</div>
+            </div>
+            <div class="mb-4">
+                <div>{{ forms.password2 }}{{ forms.password2.errors|striptags }}</div>
+            </div>
+            <div class="mb-4">
+                <input type="submit" value="Sign Up" class="btn btn-outline-primary btn-lg py-1 px-5">
+            </div>
+            <div class="mb-3 text-center">
+                <a href="{% url 'signin' %}" class="text-dark text-decoration-none">Or Sign In Here?</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

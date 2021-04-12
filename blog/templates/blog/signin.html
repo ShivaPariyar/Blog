@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    Sign In
+{% endblock title %}
+
+{% block content %}
+    <div class="container col-sm-4 shadow mt-3">
+        <div class="text-center mt-5 mb-5"><h3>Sign In</h3></div>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                <p class="mx-sm-4">{{ forms.username.label_tag }}</p>
+                <p class="mx-sm-4">{{ forms.username }}</p>
+                {{ forms.username.errors|striptags }}
+            </div>
+            <div class="mb-4">
+                <p class="mx-sm-4">{{ forms.password.label_tag }}</p>
+                <p class="mx-sm-4">{{ forms.password }}{{ forms.password.errors|striptags }}</p>
+            </div>
+            <div class="mb-4">
+                <input type="submit" value="Login" class="btn btn-outline-success rounded mx-4 px-5">
+            </div>
+            <div class="mb-3 text-center">
+                <a href="{% url 'signup' %}" class="text-dark text-decoration-none">Or Sign Up Here?</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

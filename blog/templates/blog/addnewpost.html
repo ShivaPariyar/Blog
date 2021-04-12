@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    Add New Post
+{% endblock title %}
+
+{% block content %}
+    <div class="container shadow rounded mt-5">
+        <div class="text-center mt-5"><H1>Create Your New Post</H1></div>
+        <div class="p-5">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for form in forms %}
+                    {{ form.label_tag }}{{ form }}{{ form.errors|striptags }} <br><br>
+                {% endfor %}
+                <div class="mb-4">
+                    <input type="submit" value="Add" class="btn btn-lg btn-outline-info py-1 px-5">
+                    <a href="{% url 'dashboard' %}" class="btn btn-lg btn-outline-danger py-1 px-5">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

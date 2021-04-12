@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block titile %}
+    Dashboard
+{% endblock titile %}
+
+{% block content %}
+    <div class="container rounded shadow mt-3">
+        <div class="text-center mt-4">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="mt-3 mb-3">
+            <a href="{% url 'add_post' %}" class="btn btn-lg btn-outline-danger m-3">Add New Post</a>
+        </div>
+        <div class="mt-3">
+            <table class="table border-top">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Body</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for blog in blogs %}
+                    <tr>
+                        <td>{{ blog.id }}</td>
+                        <td><img src="{{ blog.photo.url }}" height="50px" alt=""></td>
+                        <td>{{ blog.title }}</td>
+                        <td>{{ blog.content|slice:":80" }}</td>
+                        <td>{{ blog.author }} | {{ blog.date }}</td>
+                        <td>
+                            <div class="">
+                                <div>
+                                    <a href="{% url 'edit_post' blog.id %}"
+                                   class="btn btn-sm btn-outline-dark mb-1">Edit</a>
+                                </div>
+                                <form action="{% url 'delete_post' blog.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Delete" class="btn btn-sm btn-outline-danger">
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

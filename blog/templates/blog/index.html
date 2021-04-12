@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+    Blog
+{% endblock title %}
+
+{% block content %}
+    <div class="row mt-5">
+        <div class="col-12">
+            {% for blog in blogs %}
+                <div class="card mb-3 shadow" style="max-width: 600px;">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="w-100" src="{{ blog.photo.url }}" width="190px" height="200px" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ blog.title }}</h4>
+                                <p class="card-text">{{ blog.content|slice:":80"}}</p>
+                                <a href="{% url 'fullposts' blog.id %}"
+                                   class="btn btn-outline-danger btn-lg py-1 border-2"><small>Continue</small>
+                                    <span class="mx-2">&#8594;</span></a>
+                                <p class="card-text"><small class="text-muted">Author: {{ blog.author }}
+                                    | {{ blog.date }}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

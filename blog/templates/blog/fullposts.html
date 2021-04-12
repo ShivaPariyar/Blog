@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block titile %}
+    Full Post
+{% endblock titile %}
+{% block flex %}{% endblock flex %}
+{% block content %}
+    <div class="container mt-1 shadow">
+        <div class="card mb-3">
+            <h1 class="card-title text-center mt-3">{{ blogs.title }}</h1>
+            <img src="{{ blogs.photo.url }}" class="card-img-top shadow" alt="...">
+            <div class="card-body">
+                <p class="card-text"><small class="text-muted">{{ blogs.author }}{{ blogs.date }}</small></p>
+                <p class="card-text">{{ blogs.content |safe }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
